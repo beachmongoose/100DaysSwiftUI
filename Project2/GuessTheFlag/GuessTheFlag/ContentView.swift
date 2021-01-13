@@ -17,7 +17,7 @@ struct ContentView: View {
   var body: some View {
     ZStack {
       LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .edgesIgnoringSafeArea(.all)
       VStack(spacing: 30) {
         VStack {
           Text("Tap the flag of")
@@ -31,11 +31,7 @@ struct ContentView: View {
           Button(action: {
             self.flagTapped(number)
           }) {
-            Image(self.countries[number])
-              .renderingMode(.original)
-              .clipShape(Capsule())
-              .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-              .shadow(color: .black, radius: 2)
+            FlagImage(image: self.countries[number])
           }
         }
         Text("Score: \(userScore)")
@@ -64,6 +60,17 @@ struct ContentView: View {
     correctAnswer = Int.random(in: 0...2)
   }
 }
+
+struct FlagImage: View {
+    let image: String
+    var body: some View {
+      Image(image)
+        .renderingMode(.original)
+        .clipShape(Capsule())
+        .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+        .shadow(color: .black, radius: 2)
+    }
+  }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
