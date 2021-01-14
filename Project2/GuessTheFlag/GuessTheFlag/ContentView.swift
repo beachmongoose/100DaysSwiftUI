@@ -55,7 +55,10 @@ struct ContentView: View {
   }
 
   func askQuestion() {
-    if round == 10 { round = 0} else { round += 1 }
+    if round == 10 {
+      round = 0
+      userScore = 0
+    } else { round += 1 }
     countries.shuffle()
     correctAnswer = Int.random(in: 0...2)
   }
