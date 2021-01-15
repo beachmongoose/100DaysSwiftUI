@@ -11,10 +11,19 @@ struct ContentView: View {
   @State private var usedWords = [String]()
   @State private var rootWord = ""
   @State private var newWord = ""
+  @State private var playerScore = 0
 
   @State private var errorTitle = ""
   @State private var errorMessage = ""
   @State private var showingError = false
+  let pointsList =
+    [1: ["a", "e", "i", "o", "u", "l", "n", "s", "t", "r"],
+     2: ["d", "g"],
+     3: ["b", "c", "m", "p"],
+     4: ["f", "h", "v", "w", "y"],
+     5: ["k"],
+     8: ["j", "x"],
+     10: ["q", "z"]]
 
   var body: some View {
     NavigationView {
@@ -27,8 +36,14 @@ struct ContentView: View {
           Image(systemName: "\($0.count).circle")
           Text($0)
         }
+        Text("Score: \(playerScore)")
+        Spacer()
       }
       .navigationBarTitle(rootWord)
+      .navigationBarItems(trailing:
+                            Button(action: startGame) {
+                              Text("New Game")
+                            })
       .onAppear(perform: startGame)
       .alert(isPresented: $showingError) {
         Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
@@ -41,6 +56,7 @@ struct ContentView: View {
       if let startWords = try? String(contentsOf: startWordsURL) {
         let allWords = startWords.components(separatedBy: "\n")
         rootWord = allWords.randomElement() ?? "silkworm"
+        playerScore = 0
         return
       }
     }
@@ -49,7 +65,10 @@ struct ContentView: View {
 
   func addNewWord() {
     let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-    guard answer.count > 1 else { return }
+    guard answer != rootWord else { wordError(title: "Original Word", message: "You can't submit the word itself.")
+    return}
+    guard answer.count > 3 else { wordError(title: "Word too short", message: "Be more creative.")
+      return }
     guard isOriginal (word: answer) else {
         wordError(title: "Word used already", message: "Be more original.")
       return
@@ -62,8 +81,19 @@ struct ContentView: View {
       wordError(title: "Word not possible", message: "That isn't a real word.")
       return
     }
+    addPoints(for: answer)
     usedWords.insert(answer, at: 0)
     newWord = ""
+  }
+
+  func addPoints(for word: String) {
+    for letter in word {
+      for entry in pointsList {
+        if entry.value.contains(String(letter)) {
+          playerScore += entry.key
+        }
+      }
+    }
   }
 
   func isOriginal(word: String) -> Bool {
