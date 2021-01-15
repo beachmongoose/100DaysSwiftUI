@@ -18,48 +18,37 @@ struct ContentView: View {
     return Calendar.current.date(from: components) ?? Date()
   }
 
-  @State private var alertTitle = ""
-  @State private var alertMessage = ""
-  @State private var showingAlert = false
-
     var body: some View {
       NavigationView {
         Form {
-          VStack(alignment: .leading, spacing: 0) {
-            Text("When do you want to wake up?")
-              .font(.headline)
+          Section(header: Text("When do you want to wake up?")) {
             DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
               .labelsHidden()
               .datePickerStyle(WheelDatePickerStyle())
           }
-          VStack {
-            Text("Desired amount of sleep")
-              .font(.headline)
+          Section(header: Text("Desired amount of sleep")) {
             Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
               Text("\(sleepAmount, specifier: "%g") hours")
             }
           }
-          VStack {
-            Text("Daily Coffee Intake")
-              .font(.headline)
-            Stepper(value: $coffeeAmount, in: 1...20) {
-              let end = (coffeeAmount == 1) ? "cup" : "cups"
-              Text("\(coffeeAmount) \(end)")
+          Section(header: Text("Daily Coffee Intake")) {
+            Picker("Number of cups", selection: $coffeeAmount) {
+              ForEach(1...20, id:\.self) {
+                Text("\($0)")
+              }
             }
+            .pickerStyle(DefaultPickerStyle())
+          }
+          Section(header: Text("Recommended bed time")) {
+            Text("\(calculateBedtime())")
+              .font(.largeTitle)
+              .multilineTextAlignment(.center)
           }
         }
-        .navigationBarTitle("BetterRest")
-        .navigationBarItems(trailing:
-                              Button(action: calculateBedtime) {
-                                Text("Calculate")
-                              }
-      )}
-        .alert(isPresented: $showingAlert) {
-          Alert(title: Text(alertTitle), message: Text(alertMessage))
-        }
+      }
     }
 
-  func calculateBedtime() {
+  func calculateBedtime() -> String {
     let model = SleepCalculator()
     let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
     let hour = (components.hour ?? 0) * 60 * 60
@@ -70,13 +59,10 @@ struct ContentView: View {
       let formatter = DateFormatter()
       formatter.timeStyle = .short
 
-      alertMessage = formatter.string(from: sleepTime)
-      alertTitle = "Your ideal bedtime is..."
+      return formatter.string(from: sleepTime)
     } catch {
-      alertTitle = "Error"
-      alertMessage = "Sorry, there was a problem calculating your bedtime."
+      return "Error"
     }
-    showingAlert = true
   }
 }
 
