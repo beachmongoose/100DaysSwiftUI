@@ -13,7 +13,8 @@ struct ContentView: View {
     Group {
       VStack {
         if settings.isRunning {
-          GameView()
+          let rounds = Int(settings.problemAmount) ?? 145
+          GameView(numberRange: settings.numberRange, totalRounds: rounds)
         } else {
           SettingsView()
         }
