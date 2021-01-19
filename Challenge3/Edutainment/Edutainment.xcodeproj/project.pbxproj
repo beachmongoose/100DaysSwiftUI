@@ -17,6 +17,7 @@
 		9F0ACB7725B62F6300220E7E /* EdutainmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ACB7625B62F6300220E7E /* EdutainmentUITests.swift */; };
 		9F0ACB8825B62F7200220E7E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ACB8725B62F7200220E7E /* SettingsView.swift */; };
 		9F0ACB8D25B62F7800220E7E /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ACB8C25B62F7800220E7E /* GameView.swift */; };
+		9F0ACB9225B72E6600220E7E /* SetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0ACB9125B72E6600220E7E /* SetupData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9F0ACB7825B62F6300220E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0ACB8725B62F7200220E7E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9F0ACB8C25B62F7800220E7E /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		9F0ACB9125B72E6600220E7E /* SetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				9F0ACB5825B62F6100220E7E /* ContentView.swift */,
 				9F0ACB8C25B62F7800220E7E /* GameView.swift */,
 				9F0ACB8725B62F7200220E7E /* SettingsView.swift */,
+				9F0ACB9125B72E6600220E7E /* SetupData.swift */,
 				9F0ACB5A25B62F6300220E7E /* Assets.xcassets */,
 				9F0ACB5F25B62F6300220E7E /* LaunchScreen.storyboard */,
 				9F0ACB6225B62F6300220E7E /* Info.plist */,
@@ -277,6 +280,7 @@
 				9F0ACB5725B62F6100220E7E /* SceneDelegate.swift in Sources */,
 				9F0ACB5925B62F6100220E7E /* ContentView.swift in Sources */,
 				9F0ACB8D25B62F7800220E7E /* GameView.swift in Sources */,
+				9F0ACB9225B72E6600220E7E /* SetupData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

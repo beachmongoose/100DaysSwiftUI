@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var selectedValue = 1.0
-  @State var isRunning = false
+  @EnvironmentObject var settings: GameSettings
   var body: some View {
-    VStack {
-      if isRunning {
-        GameView(range: selectedValue)
-      } else {
-        SettingsView(range: selectedValue)
+    Group {
+      VStack {
+        if settings.isRunning {
+          GameView()
+        } else {
+          SettingsView()
+        }
       }
     }
   }
@@ -24,5 +25,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+          .environmentObject(GameSettings())
     }
 }

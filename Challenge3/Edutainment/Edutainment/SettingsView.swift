@@ -8,15 +8,26 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @State var range: Double
+  @EnvironmentObject var settings: GameSettings
+  var problemRange = ["5", "10", "20", "All"]
   var body: some View {
-    VStack {
-      Text("Select Multiplication Range:")
-      Stepper(value: $range, in: 1...12, step: 1) {
-        Text("\(range, specifier: "%g")")
-      }
-      Button("Start Game") {
-        isRunning = true
+    Form {
+      VStack {
+        Text("Select Multiplication Range:")
+        Stepper(value: $settings.numberRange, in: 1...12) {
+          let number = String(settings.numberRange)
+          Text("\(number)")
+        }
+        Text("Select Number of Problems:")
+        Picker("Number of Problems", selection: $settings.problemAmount) {
+          ForEach(problemRange, id: \.self) {
+            Text("\($0)")
+          }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+        Button("Start Game") {
+          self.settings.isRunning = true
+        }
       }
     }
   }
@@ -24,6 +35,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-      SettingsView(range: 1.0)
+      SettingsView()
+        .environmentObject(GameSettings())
     }
 }
