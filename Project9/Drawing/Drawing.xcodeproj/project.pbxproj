@@ -15,6 +15,7 @@
 		9F3C2CB825B8C702000D7577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F3C2CB625B8C702000D7577 /* LaunchScreen.storyboard */; };
 		9F3C2CC325B8C702000D7577 /* DrawingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C2CC225B8C702000D7577 /* DrawingTests.swift */; };
 		9F3C2CCE25B8C702000D7577 /* DrawingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3C2CCD25B8C702000D7577 /* DrawingUITests.swift */; };
+		9FCC839225B9E7F9008F4724 /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCC839125B9E7F9008F4724 /* ChallengeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9F3C2CC925B8C702000D7577 /* DrawingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F3C2CCD25B8C702000D7577 /* DrawingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingUITests.swift; sourceTree = "<group>"; };
 		9F3C2CCF25B8C702000D7577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FCC839125B9E7F9008F4724 /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				9F3C2CAB25B8C701000D7577 /* AppDelegate.swift */,
 				9F3C2CAD25B8C701000D7577 /* SceneDelegate.swift */,
 				9F3C2CAF25B8C701000D7577 /* ContentView.swift */,
+				9FCC839125B9E7F9008F4724 /* ChallengeView.swift */,
 				9F3C2CB125B8C702000D7577 /* Assets.xcassets */,
 				9F3C2CB625B8C702000D7577 /* LaunchScreen.storyboard */,
 				9F3C2CB925B8C702000D7577 /* Info.plist */,
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FCC839225B9E7F9008F4724 /* ChallengeView.swift in Sources */,
 				9F3C2CAC25B8C701000D7577 /* AppDelegate.swift in Sources */,
 				9F3C2CAE25B8C701000D7577 /* SceneDelegate.swift in Sources */,
 				9F3C2CB025B8C701000D7577 /* ContentView.swift in Sources */,
