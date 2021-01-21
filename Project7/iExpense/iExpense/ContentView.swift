@@ -14,25 +14,25 @@ struct ContentView: View {
     NavigationView {
       List {
         ForEach(expenses.items) { item in
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(item.name)
-                        .font(.headline)
-                    Text(item.type)
-                }
-
-                Spacer()
-              if item.amount <= 10 {
-                Text("$\(item.amount)")
-                  .lowAmount()
-              } else if (item.amount > 10) && (item.amount < 50) {
-                Text("$\(item.amount)")
-                  .medAmount()
-              } else {
-                Text("$\(item.amount)")
-                  .highAmount()
+          HStack {
+              VStack(alignment: .leading) {
+                  Text(item.name)
+                      .font(.headline)
+                  Text(item.type)
               }
+
+              Spacer()
+            if item.amount <= 10 {
+              Text("$\(item.amount)")
+                .lowAmount()
+            } else if (item.amount > 10) && (item.amount < 50) {
+              Text("$\(item.amount)")
+                .medAmount()
+            } else {
+              Text("$\(item.amount)")
+                .highAmount()
             }
+          }
         }
         .onDelete(perform: removeItems)
       }
