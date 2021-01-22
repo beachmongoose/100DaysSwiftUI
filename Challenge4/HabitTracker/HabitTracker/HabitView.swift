@@ -13,14 +13,15 @@ struct HabitView: View {
   var habit: Habit
   @State private var steps = 0
   var body: some View {
-    NavigationView {
-      Form {
+    VStack {
         Stepper(value: $steps, in: 0...1000) {
-          let end = (self.steps == 0 || steps > 1) ? "times" : "time"
-          (Text("\(steps) \(end)"))
+            let end = (self.steps == 0 || steps > 1) ? "times" : "time"
+            (Text("\(steps) \(end)"))
+              .font(.title3)
         }
+        .padding(20)
+      Spacer()
       }
-    }
     .navigationBarTitle(habit.name)
     .navigationBarItems(trailing: Button("Save") {
       saveChanges()
