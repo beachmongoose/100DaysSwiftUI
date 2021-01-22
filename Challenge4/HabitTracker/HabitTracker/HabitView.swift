@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HabitView: View {
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @ObservedObject var habitList: HabitList
   var habit: Habit
   @State private var steps = 0
@@ -20,7 +21,7 @@ struct HabitView: View {
         }
       }
     }
-    .navigationTitle(habit.name)
+    .navigationBarTitle(habit.name)
     .navigationBarItems(trailing: Button("Save") {
       saveChanges()
     })
@@ -34,10 +35,9 @@ struct HabitView: View {
   func saveChanges() {
     for item in 0..<habitList.tasks.count {
       if habitList.tasks[item].id == habit.id {
-        var editItem = habitList.tasks[item]
-        editItem.times = steps
-        habitList.tasks[item] = editItem
+        habitList.tasks[item].times = steps
       }
+      self.presentationMode.wrappedValue.dismiss()
     }
   }
 }

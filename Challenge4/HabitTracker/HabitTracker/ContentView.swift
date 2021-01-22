@@ -15,9 +15,10 @@ struct ContentView: View {
         List {
           ForEach(habitList.tasks) { habit in
             NavigationLink(destination: HabitView(habitList: self.habitList, habit: habit)) {
-              HStack(spacing: 200) {
+              HStack() {
                 Text(habit.name)
                   .font(.headline)
+                Spacer()
                 Text(habit.timesAsText)
               }
             }
