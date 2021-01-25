@@ -18,10 +18,10 @@ struct DetailView: View {
     GeometryReader { geometry in
       VStack {
         ZStack(alignment: .bottomTrailing) {
-          Image(self.book.genre ?? "Fantasy")
+          Image(self.book.genre ?? "Other")
             .frame(maxWidth: geometry.size.width)
 
-          Text(self.book.genre?.uppercased() ?? "FANTASY")
+          Text(self.book.genre?.uppercased() ?? "OTHER")
             .font(.caption)
             .fontWeight(.black)
             .padding(8)
@@ -41,6 +41,7 @@ struct DetailView: View {
           .font(.largeTitle)
 
         Spacer()
+        Text("Added \((book.date ?? Date()).stringDate)")
       }
     }
     .alert(isPresented: $showingDeleteAlert) {
@@ -61,6 +62,14 @@ struct DetailView: View {
 
     try? self.moc.save()
     presentationMode.wrappedValue.dismiss()
+  }
+}
+
+extension Date {
+  var stringDate: String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    return formatter.string(from: self)
   }
 }
 
