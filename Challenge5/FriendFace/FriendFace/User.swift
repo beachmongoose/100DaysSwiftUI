@@ -34,6 +34,17 @@ struct User: Decodable, Identifiable {
   var shortDate: String {
     return registeredAsDate.stringDate
   }
+
+  var friendsList: [User] {
+    let users = Users().users
+    var matches = [User]()
+    for friend in self.friends {
+      if let match = users.first(where: {$0.id == friend.id}) {
+        matches.append(match)
+      }
+    }
+    return users
+  }
 }
 
 extension Date {
