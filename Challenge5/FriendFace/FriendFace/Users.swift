@@ -10,6 +10,7 @@ import Foundation
 
 class Users: ObservableObject {
   @Published var users = [User]()
+  @Published var moveToMain: Bool = false
 
   init() {
     guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {

@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State var mainIsActive: Bool = false
   @EnvironmentObject var userList: Users
   var body: some View {
     let users = userList.users
     NavigationView {
       List(users, id: \.id) { user in
-        VStack(alignment: .leading) {
-          Text(user.name)
-            .font(.headline)
-            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-          Text(user.company)
-          Text(user.email)
-            .foregroundColor(.secondary)
+        NavigationLink(destination: UserView(user: user, friends: users), isActive: $mainIsActive) {
+          VStack(alignment: .leading) {
+            Text(user.name)
+              .font(.headline)
+              .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            Text(user.company)
+            Text(user.email)
+              .foregroundColor(.secondary)
+          }
         }
       }
+      .navigationTitle("FriendFace")
     }
   }
 }
