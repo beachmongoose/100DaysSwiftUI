@@ -30,6 +30,8 @@ struct ContentView: View {
             Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
               Text("\(sleepAmount, specifier: "%g") hours")
             }
+            // Project 15 Challenge 2
+            .accessibility(value: Text("\(sleepAmount, specifier: "%g") hours"))
           }
           Section(header: Text("Daily Coffee Intake")) {
             Picker("Number of cups", selection: $coffeeAmount) {
@@ -37,6 +39,8 @@ struct ContentView: View {
                 Text("\($0)")
               }
             }
+            // Project 15 Challenge 2
+            .accessibility(value: Text("\(coffeeAmount) cups"))
             .pickerStyle(DefaultPickerStyle())
           }
           Section(header: Text("Recommended bed time")) {
