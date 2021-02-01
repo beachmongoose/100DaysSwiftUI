@@ -22,6 +22,7 @@
 		9F09AD4025C4AAC80011DCB4 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09AD3F25C4AAC80011DCB4 /* EditView.swift */; };
 		9F09AD4825C4AD7D0011DCB4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09AD4725C4AD7D0011DCB4 /* Result.swift */; };
 		9FCF2CCA25C85F8000678FDB /* MKPointAnnotation+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF2CC925C85F8000678FDB /* MKPointAnnotation+Codable.swift */; };
+		9FCF2CCF25C8744800678FDB /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCF2CCE25C8744800678FDB /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		9F09AD3F25C4AAC80011DCB4 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		9F09AD4725C4AD7D0011DCB4 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		9FCF2CC925C85F8000678FDB /* MKPointAnnotation+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation+Codable.swift"; sourceTree = "<group>"; };
+		9FCF2CCE25C8744800678FDB /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				9F09ACAB25C46DCF0011DCB4 /* AppDelegate.swift */,
 				9F09ACAD25C46DCF0011DCB4 /* SceneDelegate.swift */,
 				9F09ACAF25C46DCF0011DCB4 /* ContentView.swift */,
+				9FCF2CCE25C8744800678FDB /* UserView.swift */,
 				9F09AD4725C4AD7D0011DCB4 /* Result.swift */,
 				9F09AD3025C4881E0011DCB4 /* MapView.swift */,
 				9F09AD3F25C4AAC80011DCB4 /* EditView.swift */,
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FCF2CCF25C8744800678FDB /* UserView.swift in Sources */,
 				9F09AD4825C4AD7D0011DCB4 /* Result.swift in Sources */,
 				9F09ACAC25C46DCF0011DCB4 /* AppDelegate.swift in Sources */,
 				9FCF2CCA25C85F8000678FDB /* MKPointAnnotation+Codable.swift in Sources */,
