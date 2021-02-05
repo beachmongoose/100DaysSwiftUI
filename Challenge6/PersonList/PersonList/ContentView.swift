@@ -8,18 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-  private var images = ["keyboard", "hifispeaker.fill", "circle.fill", "printer.fill", "keyboard"]
+  @EnvironmentObject var peopleList: People
   @State private var showingAddPerson = false
     var body: some View {
       NavigationView {
         GeometryReader { geo in
-          List(images, id: \.self) { image in
-            HStack(spacing: 20) {
-              Image(systemName: image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 55, height: 55)
-              Text(image)
+          List() {
+            ForEach(peopleList.people, id: \.id) { person in
+              NavigationLink(destination: PersonView(person: person)) {
+                HStack(spacing: 20) {
+                  let image = person.imageID()
+                  if image != nil {
+                    Image(uiImage: image!)
+                      .resizable()
+                      .scaledToFit()
+                      .frame(width: 55, height: 55)
+                  } else {
+                    DefaultRectangle()
+                      .frame(width: 55, height: 55)
+                  }
+                  VStack {
+                    Text(person.firstName)
+                    Text(person.lastName)
+                  }
+                }
+              }
             }
           }
           .listStyle(PlainListStyle())

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddPersonView: View {
+  @Environment(\.presentationMode) var presentationMode
+  @EnvironmentObject var peopleList: People
   @State private var firstName = ""
   @State private var lastName = ""
   @State var inputImage: UIImage?
@@ -49,25 +51,36 @@ struct AddPersonView: View {
             ImagePicker(image: $inputImage)
           }
           .navigationBarItems(trailing: Button("Save") {
-            self.saveImage()
+            self.savePerson()
           })
         }
       }
     }
 
-  func saveImage() {
-    
+  func savePerson() {
+    let imageName = UUID().uuidString
+    saveImage(url: imageName)
+    let person = Person(firstName: self.firstName, lastName: self.lastName, image: imageName)
+    self.peopleList.people.append(person)
+    FileManager().encode(people: peopleList.people)
+    self.presentationMode.wrappedValue.dismiss()
   }
 
-  struct DefaultRectangle: View {
-    var body: some View {
-      ZStack {
-        Rectangle()
-          .fill(Color.secondary)
-        Text("+ Add Image")
-          .foregroundColor(.white)
-          .fontWeight(.bold)
-      }
+  func saveImage(url: String) {
+    let fileManager = FileManager()
+    guard let jpegData = inputImage?.jpegData(compressionQuality: 0.8) else { return }
+    try? jpegData.write(to: fileManager.getDocumentsDirectory().appendingPathComponent(url), options: [.atomicWrite, .completeFileProtection])
+  }
+}
+
+struct DefaultRectangle: View {
+  var body: some View {
+    ZStack {
+      Rectangle()
+        .fill(Color.secondary)
+      Text("+ Add Image")
+        .foregroundColor(.white)
+        .fontWeight(.bold)
     }
   }
 }
