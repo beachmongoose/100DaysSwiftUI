@@ -17,22 +17,20 @@ struct AddPersonView: View {
     var body: some View {
       GeometryReader { geo in
         NavigationView {
-          VStack {
-            ZStack {
+            Form {
               if inputImage != nil {
                 Image(uiImage: inputImage!)
                   .resizable()
                   .scaledToFit()
-                  .frame(width: geo.size.width / 1.1, height: geo.size.width / 1.1)
+                  .onTapGesture {
+                    self.showingImagePicker = true
+                  }
               } else {
                 DefaultRectangle()
-                  .frame(width: geo.size.width / 1.1, height: geo.size.width / 1.1)
+                  .onTapGesture {
+                    self.showingImagePicker = true
+                  }
               }
-            }
-            .onTapGesture {
-              self.showingImagePicker = true
-            }
-            Form {
               HStack(spacing: 10) {
                 Text("First:")
                   .fontWeight(.bold)
@@ -43,10 +41,9 @@ struct AddPersonView: View {
                 Text("Last:")
                   .fontWeight(.bold)
                 TextField("Last name", text: $lastName)
-                .disabled(inputImage == nil)
+                  .disabled(inputImage == nil)
               }
             }
-          }
           .sheet(isPresented: $showingImagePicker) {
             ImagePicker(image: $inputImage)
           }
